@@ -17,9 +17,10 @@ public class StuduserDAO {
 	}
 	public int insertStuduser(String stud_id,String stud_passwd,String stud_name,String stud_phone,
 			String stud_gender,String stud_email,String [] sHobby) throws SQLException{
-		String sql ="intsert into studuser(stud_id,stud_passwd,stud_name,stud_phone,stud_gender,stud_email,stud_hobby1,stud_hobby2,stud_hobby3,stud_regdate)values(?,?,?,?,?,?,?,?,?,?);";
+		String sql ="insert into studuser(stud_id,stud_passwd,stud_name,stud_phone,stud_gender,stud_email,stud_hobby1,stud_hobby2,stud_hobby3,stud_regdate)values(?,?,?,?,?,?,?,?,?,?);";
 		try {
 			conn=DriverManager.getConnection(url,user,pass);
+			ps=conn.prepareStatement(sql);
 			java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyyMMddHHmmss");
 			String stud_regdate = formatter.format(new java.util.Date());
 			ps.setString(1,stud_id);ps.setString(2,stud_passwd);ps.setString(3,stud_name);
@@ -37,4 +38,4 @@ public class StuduserDAO {
 	}
 	
 
-}
+}	
